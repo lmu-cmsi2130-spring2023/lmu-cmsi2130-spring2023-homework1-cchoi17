@@ -64,17 +64,15 @@ public class Pathfinder {
   }
 
   public static int distanceToGoal(Set<MazeState> keysCollected, MazeState state, MazeProblem problem){
-    int closest = Integer.MAX_VALUE;
+    HashSet<Integer> closest = new HashSet<>();
     for(MazeState s: problem.getKeyStates()){
       if(keysCollected.contains(s)){
         continue;
       }
       var distance = Math.abs(state.col() - s.col()) + Math.abs(state.row() - s.row());
-      if(closest > distance){
-        closest = distance;
-      } 
+      closest.add(distance);
     }
-    return closest; 
+    return Collections.min(closest); 
   } 
   
   public static LinkedList<String> getPath(SearchTreeNode last) {
