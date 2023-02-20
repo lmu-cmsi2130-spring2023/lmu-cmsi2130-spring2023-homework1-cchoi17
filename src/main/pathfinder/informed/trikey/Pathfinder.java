@@ -20,6 +20,8 @@ public class Pathfinder {
    *         format: ["R", "R", "L", ...]
    */
   public static List<String> solve(MazeProblem problem) {
+    // >> [TN] Variable name could be better. The queue isn't actually the maze so it 
+    // doesn't totally make sense to call it that. 
     PriorityQueue<SearchTreeNode> maze = new PriorityQueue<>();
     HashSet<SearchTreeNode> graveyard = new HashSet<>();
     SearchTreeNode initial = new SearchTreeNode(
@@ -63,6 +65,7 @@ public class Pathfinder {
     return null;
   }
 
+  // >> [TN] Provide proper Javadocs for ALL methods, including helpers you write (-0.25)
   public static int distanceToGoal(Set<MazeState> keysCollected, MazeState state, MazeProblem problem){
     HashSet<Integer> closest = new HashSet<>();
     for(MazeState s: problem.getKeyStates()){
@@ -146,3 +149,28 @@ public class Pathfinder {
     
   }
 }
+
+// ===================================================
+// >>> [TN] Summary
+// Nice job on this assignment! Well tested with only
+// a few edge cases slipping by. Variables names are mostly
+// well chosen. Just remember that all your helper methods need
+// documentation. It also would be better to have your helper
+// methods private since they're only needed for this class
+// ---------------------------------------------------
+// >>> [TN] Style Checklist
+// [X] = Good, [~] = Mixed bag, [ ] = Needs improvement
+//
+// [X] Variables and helper methods named and used well
+// [X] Proper and consistent indentation and spacing
+// [X] Proper JavaDocs provided for ALL methods
+// [X] Logic is adequately simplified
+// [X] Code repetition is kept to a minimum
+// ---------------------------------------------------
+// Correctness:        98.5  / 100 (-1.5 / missed unit test)
+//   -> Refunded 2 grading tests, so will be out of 28
+//      not 30
+// Style Penalty:       -.25
+// Total:               98.25 / 100
+// ===================================================
+
